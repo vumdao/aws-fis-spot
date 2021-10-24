@@ -29,7 +29,7 @@
 - We can use [`aws-node-termination-handler`](https://github.com/aws/aws-node-termination-handler) to ensures that the Kubernetes control plane responds appropriately to events that can cause your EC2 instance to become unavailable
 
 ## 🚀 **Simulate Spot Interruptions architect** <a name="Simulate-Spot-Interruptions-architect"></a>
-- Starting the FIS experiment will send `send-spot-instance-interruptions` event.
+- Starting the FIS experiment which sends `send-spot-instance-interruptions` event.
 - Use cloudwatch event rule to catch `EC2 Spot Instance Interruption Warning` event and then trigger lambda function for sending slack notifications.
 - `aws-node-termination-handler` kubernetes DaemonSet also takes action when catching the event
 
@@ -39,7 +39,7 @@
 ## **Now we start creating CDK stacks**
 
 ## 🚀 **Create Lambda function - send slack** <a name="Create-Lambda-function---send-slack"></a>
-- Lambda handler
+- Lambda handler parses the event to send slack message which contains event detail-type, instance ID and action
 
     <details>
     <summary>app.py</summary>
